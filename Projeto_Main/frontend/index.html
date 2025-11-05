@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>PetLife</h1>
+
+        <nav class="sidebar">
+            <a href="#" class="active" onclick="showSection('home', event)">Início</a>
+            <a href="#" onclick="showSection('Cadastro', event)">Cadastro</a>
+            <a href="#" onclick="showSection('Contato', event)">Contato</a>
+        </nav>
+    </header>
+
+    <section id="home" class="section active">
+        
+        <div id="lista-cards"  class="caixa"></div>
+
+    </section>
+
+    <section id="Cadastro" class="section">
+        <div class="container-form">
+            <form id="form">
+                <h3>Cadastro</h3>
+
+                <label>Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome" required>
+                
+                <label>Email:</label>
+                <input type="email" id="email" placeholder="Digite seu email" required>
+
+                <label>CPF:</label>
+                <input type="text" id="cpf" placeholder="Informe seu CPF" required>
+
+                <label>Endereço:</label>
+                <input type="text" id="ender" placeholder="Informe seu endereço" required>
+                
+                <h3>Dados do seu Pet</h3>
+
+                <label>Pet escolhido:</label>
+                <input type="text" id="petNome" readonly>
+
+                <label>Sexo:</label>
+                <input type="text" id="petSexo" readonly>
+                
+                <label>Idade:</label>
+                <input type="text" id="petIdade" readonly>
+                
+                <label>Cor:</label>
+                <input type="text" id="petCor" readonly>
+                
+                <label>Porte:</label>
+                <input type="text" id="petPorte" readonly>
+
+
+                <button type="submit">Cadastrar</button>
+                <div id="mensagem"></div>
+            </form>
+        </div>
+    </section>
+
+    <section id="Contato" class="section">
+        <h2>Contato</h2>
+        <p>Coloque aqui depois os dados de contato...</p>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>AdotaPet</h3>
+                <p>Conectando animais a novos lares cheios de amor ❤️</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#" onclick="showSection('home', event)">Início</a></li>
+                    <li><a href="#">Cachorros</a></li>
+                    <li><a href="#">Gatos</a></li>
+                    <li><a href="#">Adotar</a></li>
+                    <li><a href="#" onclick="showSection('Contato', event)">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p>📍 Rua dos Animais, 123 - Brasil</p>
+                <p>📧 contato@adotapet.com</p>
+                <p>📞 (11) 99999-9999</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Redes Sociais</h4>
+                <div class="social">
+                    <a href="#">🐶</a>
+                    <a href="#">🐱</a>
+                    <a href="#">📸</a>
+                    <a href="#">👍</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 AdotaPet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./js/logicaa.js"></script>
+</body>
+</html>
