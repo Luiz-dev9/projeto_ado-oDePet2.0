@@ -8,12 +8,17 @@
 </head>
 <body>
     <header>
-        <h1>PetLife</h1>
+        <div class="logo-container">
+            <img src="./img/Logo.png" alt="">   
+            <h1>PetLife</h1>
+
+        </div>
 
         <nav class="sidebar">
             <a href="#" class="active" onclick="showSection('home', event)">Início</a>
             <a href="#" onclick="showSection('Cadastro', event)">Cadastro</a>
             <a href="#" onclick="showSection('Contato', event)">Contato</a>
+            <a href="#"  onclick="showSection('Avaliacao', event)">Avaliações</a>
         </nav>
     </header>
 
@@ -22,6 +27,7 @@
         <div id="lista-cards"  class="caixa"></div>
 
     </section>
+    
 
     <section id="Cadastro" class="section">
         <div class="container-form">
@@ -53,7 +59,10 @@
                 
                 <label>Cor:</label>
                 <input type="text" id="petCor" readonly>
-                
+
+                <label>Raça:</label>
+                <input type="text" id="petRaca" readonly>
+
                 <label>Porte:</label>
                 <input type="text" id="petPorte" readonly>
 
@@ -68,6 +77,24 @@
         <h2>Contato</h2>
         <p>Coloque aqui depois os dados de contato...</p>
     </section>
+
+      <section id="Avaliacao" class="section">
+          <h3>Historias em destaques</h3>
+
+          <div class="avalicoes">
+          <div class="carde">
+            <img src="./img/adotado.jpg" alt="">
+            <h3>Adoção de <strong>Duque</strong></h3>
+            <p>Luiz:  </p>
+            <div class="cometario">
+                <p>"A Luna transformou meus dias. Eu achava que estava salvando uma vida, mas foi ela quem salvou a minha. Hoje a casa é cheia de amor, ronronados e muita alegria!"</p>
+            </div>
+          </div>
+          <div class="carde"></div>
+          <div class="carde"></div>
+
+        </div>
+      </section>
 
     <footer>
         <div class="footer-container">
@@ -104,8 +131,9 @@
                     <a href="#">👍</a>
                 </div>
             </div>
-
         </div>
+
+      
 
         <div class="footer-bottom">
             <p>© 2025 AdotaPet. Todos os direitos reservados.</p>
