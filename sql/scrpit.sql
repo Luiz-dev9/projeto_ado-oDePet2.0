@@ -8,6 +8,7 @@ CREATE TABLE pet (
     sexo ENUM('macho', 'femea') NOT NULL,
     idade INT NOT NULL,
     cor VARCHAR(20) NOT NULL,
+    raca VARCHAR(255) NOT NULL,
     porte VARCHAR(30) NOT NULL
 );
 

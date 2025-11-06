@@ -11,3 +11,4 @@ conectar.connect((err) =>{
     console.log("conectado ao banco de dados")
 })
 module.exports = conectar;
+
