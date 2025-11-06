@@ -10,6 +10,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("Servidor AdotaPet rodando!");
 });
+const mysql = require("mysql2")
 
 app.post("/cadastra", (req, res) => {
     const { nome, email, cpf, endereco, pet } = req.body;

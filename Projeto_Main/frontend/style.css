@@ -176,6 +176,7 @@ form button {
     margin-top: 8px;
     cursor: pointer;
     transition: .3s;
+    border: none;
 }
 
 form button:hover {
