@@ -18,23 +18,33 @@ const pets = [
   { nome: "Amélia", sexo: "Fêmea", idade: "6 meses", cor: "Branca", raca: "SRD", porte: "Pequena", descricao: "Amélia é curiosa e brincalhona, adapta-se rápido.", img: "./img/amelia.jpg" },
   { nome: "Duque", sexo: "Macho", idade: "7 anos", cor: "Marrom", raca: "Labrador", porte: "Médio", descricao: "Duque é calmo e muito educado.", img: "./img/milo.avif" },
   { nome: "Bela", sexo: "Fêmea", idade: "3 anos", cor: "Cinza e Marrom", raca: "Persa", porte: "Pequena", descricao: "Bela é elegante, carinhosa e precisa de um lar cheio de amor.", img: "./img/bella.avif" },
-  { nome: "Mel e Lua", sexo: "Fêmea", idade: "2 anos", cor: "Caramelo e Listrado", raca: "SRD", porte: "Médio", descricao: "Mel é doce, alegre e ama crianças.", img: "./img/Adão  e Eva.avif" }
+  { nome: "Mel e Lua", sexo: "Fêmea", idade: "2 anos", cor: "Caramelo e Listrado", raca: "SRD", porte: "Médio", descricao: "Mel é doce, alegre e ama crianças.", img: "./img/Adão  e Eva.avif" },
+  { nome: "Fred", sexo: "Macho", idade: "1 anos", cor: "Preto", raca: "SRD", porte: "Médio", descricao: "Fred é um cachorro com muitas dificuldas de encontra uma nova familia, ele busca a optunidade de encontra uma falimia feliz", img: "./img/srd-p.webp" },
+  { nome: "Chedda", sexo: "Macho", idade: "2 anos", cor: "Caramelo e Listrado", raca: "Corgi", porte: "Médio", descricao: "Cheda é uma um companheiro extremamente carinho e leal.", img: "./img/chedda.jpg" }
 ];
 
 const cards = document.getElementById("lista-cards");
 
 function carregarPets() {
+  const petsStatus = JSON.parse(localStorage.getItem("petsStatus")) || {};
+
   if (!cards) return;
   cards.innerHTML = "";
 
   pets.forEach((pet, index) => {
+    const status = petsStatus[pet.nome];
+
     cards.innerHTML += `
-      <div class="card">
+      <div class="card ${status === "processo" ? "adotando" : ""}">
         <img src="${pet.img}" alt="${pet.nome}">
         <h2>${pet.nome}</h2>
         <p>${pet.sexo} • ${pet.idade} • ${pet.cor} • Raça ${pet.raca} • Porte ${pet.porte}<br>
         ${pet.descricao}</p>
-        <button class="btn" onclick="selecionarPet(${index})">Quero Adotar</button>
+
+        ${status === "processo"
+          ? `<span class="status-label">🐾 Em processo de adoção</span>`
+          : `<button class="btn" onclick="selecionarPet(${index})">Quero Adotar</button>`
+        }
       </div>
     `;
   });
@@ -44,6 +54,7 @@ carregarPets();
 function selecionarPet(index) {
   const pet = pets[index];
   if (!pet) return;
+
   localStorage.setItem("petSelecionado", JSON.stringify(pet));
   showSection('Cadastro');
   preencherFormularioPet();
@@ -112,11 +123,18 @@ if (formEl) {
         return;
       }
 
+      // 🚩 Salva status do pet para não aparecer como disponível
+      const petsStatus = JSON.parse(localStorage.getItem("petsStatus")) || {};
+      petsStatus[pet.nome] = "processo";
+      localStorage.setItem("petsStatus", JSON.stringify(petsStatus));
+
       alert(`Cadastro realizado! Obrigado por adotar o(a) ${pet.nome} 🐾`);
+
       formEl.reset();
       localStorage.removeItem("petSelecionado");
 
       showSection('home');
+      carregarPets(); // atualiza os cards
 
     } catch (err) {
       console.error(err);
@@ -124,3 +142,4 @@ if (formEl) {
     }
   });
 }
+
