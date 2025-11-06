@@ -6,8 +6,6 @@ const conectar = mysql.createConnection({
     database:"petlife"
 });
 
-
-
 conectar.connect((err) =>{
     if(err) throw err;
     console.log("conectado ao banco de dados")
